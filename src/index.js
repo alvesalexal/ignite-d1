@@ -35,7 +35,7 @@ app.post('/users', checksExistsUserAccount, (request, response) => {
 app.get('/todos', checksExistsUserAccount, (request, response) => {
   const { username } = request.headers;
   console.log(username);
-  const user = users.find((user) => user.username === username );
+  const user = users.find((user) => user.userName === username );
   if (user) {
     return response.json(user.todo);
   }
@@ -50,7 +50,7 @@ app.post('/todos', checksExistsUserAccount, (request, response) => {
   console.log(user)
   if (user) {
     user.todo.push({
-      title, deadline, done: false, id,todo
+      title, deadline, done: false, id
     })
     return response.status(201).json(user.todo);
   }
