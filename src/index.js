@@ -50,7 +50,7 @@ app.post('/todos', checksExistsUserAccount, (request, response) => {
   console.log(user)
   if (user) {
     user.todo.push({
-      title, deadline, done: false, id
+      title, deadline: new Date(deadline), done: false, id, created_at: new Date()
     })
     return response.status(201).json(user.todo);
   }
